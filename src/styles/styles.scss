@@ -1,0 +1,70 @@
+@use 'colors';
+@mixin round-image($size) {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+}
+
+$header-height: 200px;
+$page-width: 100vw;
+$font-family: sans-serif;
+$font-size: 20px;
+$column-padding: 10%;
+body {
+    margin: 0px;
+}
+
+.header {
+    padding: 20px;
+    background-image: url("../../public/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 10%;
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    font-family: $font-family;
+    .image {
+        @include round-image(175px);
+    }
+    .title {
+        color: colors.$secondary-color;
+        padding-left: 10%;
+        font-size: 60px;
+    }
+    .sub-title {
+        font-size: 25px;
+    }
+}
+
+.bottom {
+    color: colors.$primary-color;
+    font-family: $font-family;
+    display: flex;
+    h2 {
+        border-bottom: 5px solid colors.$primary-color;
+    }
+    .left-column {
+        background-color: colors.$white;
+        font-size: $font-size;
+        padding-left: $column-padding;
+        padding-right: $column-padding;
+        width: 30%;
+        .contact {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .right-column {
+        @extend .left-column;
+        background-color: colors.$tertiary-color;
+        width: 45%;
+        .work-title {
+            @extend .work-subtitle;
+            font-size: 25px;
+        }
+        .work-subtitle {
+            padding-left: 5%;
+        }
+    }
+}
